@@ -1,7 +1,7 @@
 ; amd64
 
 bbs:
-	; int[] heap
+	; int[] unsorted array
         PUSH    RBP
         MOV     RBP, RSP
         MOV     DWORD PTR [RBP-64], 0
