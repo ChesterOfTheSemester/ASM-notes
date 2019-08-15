@@ -1,6 +1,7 @@
 ; amd64
 ; quicksort interpretation
 
+; ASC sort an array
 SWAP:
         PUSH    RBP
         MOV     RBP, RSP
