@@ -1,5 +1,4 @@
 ; amd64
-
 ; quicksort interpretation
 
 SWAP:
@@ -97,8 +96,6 @@ QS:
         MOV     QWORD PTR [RBP-24], RDI
         MOV     DWORD PTR [RBP-28], ESI
         MOV     DWORD PTR [RBP-32], EDX
-        MOV     DWORD PTR [RBP-28], 0
-        MOV     DWORD PTR [RBP-32], 7
         MOV     DWORD PTR [RBP-4], 8
         MOV     EAX, DWORD PTR [RBP-28]
         CMP     EAX, DWORD PTR [RBP-32]
@@ -128,5 +125,17 @@ QS:
         CALL    QS
 .L8:
         LEA     RAX, [RBP-24]
+        LEAVE
+        RET
+MAIN:
+        PUSH    RBP
+        MOV     RBP, RSP
+        SUB     RSP, 16
+        MOV     QWORD PTR [RBP-8], 0
+        MOV     RAX, QWORD PTR [RBP-8]
+        MOV     EDX, 0
+        MOV     ESI, 0
+        MOV     RDI, RAX
+        CALL    QS
         LEAVE
         RET
