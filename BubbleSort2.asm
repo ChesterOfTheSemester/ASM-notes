@@ -6,18 +6,18 @@ bbs(INT*, INT):
         MOV     RBP, RSP
         MOV     QWORD PTR [RBP-24], RDI
         MOV     DWORD PTR [RBP-28], ESI
-        MOV     DWORD PTR [RBP-4], 0 				; i = 0
-L6:													                ; i&j loop. repeat j-loop(length^2 - i)
+        MOV     DWORD PTR [RBP-4], 0 		; i = 0
+L6:						; i&j loop. repeat j-loop(length^2 - i)
         MOV     EAX, DWORD PTR [RBP-4]
         CMP     EAX, DWORD PTR [RBP-28]
         JGE     L7
-        MOV     DWORD PTR [RBP-8], 0 				; j = 0
+        MOV     DWORD PTR [RBP-8], 0 		; j = 0
 L5:
         MOV     EAX, DWORD PTR [RBP-28]
         SUB     EAX, DWORD PTR [RBP-4]
         CMP     DWORD PTR [RBP-8], EAX
         JGE     L3
-        MOV     EAX, DWORD PTR [RBP-8]			; if left > right
+        MOV     EAX, DWORD PTR [RBP-8]		; if left > right
         CDQE
         LEA     RDX, [0+RAX*4]
         MOV     RAX, QWORD PTR [RBP-24]
@@ -31,7 +31,7 @@ L5:
         ADD     RAX, RCX
         MOV     EAX, DWORD PTR [RAX]
         CMP     EDX, EAX
-        JLE     L4									      ; execute swap
+        JLE     L4				; execute swap
         MOV     EAX, DWORD PTR [RBP-8]
         CDQE
         LEA     RDX, [0+RAX*4]
@@ -77,7 +77,7 @@ LC1:
 main:
         PUSH    RBP
         MOV     RBP, RSP
-        SUB     RSP, 64								  ; int unsorted { 6, 2, 9, 1, 5, 7, 4, 1, 3, 8 } : 10
+        SUB     RSP, 64				; int unsorted { 6, 2, 9, 1, 5, 7, 4, 1, 3, 8 } : 10
         MOV     DWORD PTR [RBP-64], 6
         MOV     DWORD PTR [RBP-60], 2
         MOV     DWORD PTR [RBP-56], 9
@@ -91,14 +91,14 @@ main:
         LEA     RAX, [RBP-64]
         MOV     QWORD PTR [RBP-16], RAX
         MOV     RAX, QWORD PTR [RBP-16]
-        MOV     ESI, 10 							  ; sizeof(unsorted)
+        MOV     ESI, 10 			; sizeof(unsorted)
         MOV     RDI, RAX
         CALL    bbs(INT*, INT)
         MOV     EDI, OFFSET FLAT:LC0
         MOV     EAX, 0
         CALL    PRINTF
         MOV     DWORD PTR [RBP-4], 0
-L10:   											; output
+L10:   						; output
         MOV     EAX, DWORD PTR [RBP-4]
         CDQE
         CMP     RAX, 9
