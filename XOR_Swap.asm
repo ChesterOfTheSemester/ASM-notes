@@ -1,4 +1,4 @@
-; XOR Swap without 3rd data unit
+; XOR Swap without the need for a 3rd data unit
 swap:
         PUSH    RBP
         MOV     RBP, RSP
