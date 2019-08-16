@@ -73,7 +73,7 @@ L7:
 LC0:
         STRING "OUTPUT: "
 LC1:
-        STRING "%D "
+        STRING "%d "
 main:
         PUSH    RBP
         MOV     RBP, RSP
@@ -110,7 +110,7 @@ L10:   						; output
         ADD     RAX, RDX
         MOV     EAX, DWORD PTR [RAX]
         MOV     ESI, EAX
-        MOV     EDI, OFFSET FLAT:LC1
+        MOV     EDI, OFFSET FLAT:LC1            ; printf("%d")
         MOV     EAX, 0
         CALL    PRINTF
         ADD     DWORD PTR [RBP-4], 1
