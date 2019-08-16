@@ -1,6 +1,7 @@
 ; bbs interpretation x86
 ; ASC sort unsorted address range
 
+;  (ptr, len)
 bbs(INT*, INT):
         PUSH    RBP
         MOV     RBP, RSP
